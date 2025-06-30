@@ -48,20 +48,20 @@ stages:
       size: 3766
     params:
       params.yaml:
-        feature_engineering.max_features: 100
+        feature_engineering.max_features: 50
     outs:
     - path: data/processed
       hash: md5
-      md5: 9080614ce6d3c53af348492a7e1a7823.dir
-      size: 4534620
+      md5: 8acf42c4c31ce90979bd28c4c6ff4e86.dir
+      size: 2328890
       nfiles: 2
   model_building:
     cmd: python src/model/model_building.py
     deps:
     - path: data/processed
       hash: md5
-      md5: 9080614ce6d3c53af348492a7e1a7823.dir
-      size: 4534620
+      md5: 8acf42c4c31ce90979bd28c4c6ff4e86.dir
+      size: 2328890
       nfiles: 2
     - path: src/model/model_building.py
       hash: md5
@@ -74,15 +74,15 @@ stages:
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 91e85dbbd680387020f69009c8a6fd65
-      size: 39633
+      md5: 836c9aec8d8c6dc096e4aae1e9505a82
+      size: 39345
   model_evaluation:
     cmd: python src/model/model_evaluation.py
     deps:
     - path: models/model.pkl
       hash: md5
-      md5: 91e85dbbd680387020f69009c8a6fd65
-      size: 39633
+      md5: 836c9aec8d8c6dc096e4aae1e9505a82
+      size: 39345
     - path: src/model/model_evaluation.py
       hash: md5
       md5: c790ebd488e0e50840e8a2e6fdb3cdf5
@@ -90,5 +90,5 @@ stages:
     outs:
     - path: reports/metrics.json
       hash: md5
-      md5: bef2d5d84e913db129b81dab391d8c25
+      md5: 43bb953a63cfae540e9e56e06ab9edeb
       size: 144
